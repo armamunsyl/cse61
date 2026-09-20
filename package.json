@@ -1,0 +1,20 @@
+{
+  "name": "mucse61-schedule-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Academic schedule and assessment planning portal for Metropolitan University CSE 61 D.",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "lint": "npm run lint -w client && npm run lint -w server",
+    "test": "npm run test -w server",
+    "seed": "npm run seed -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

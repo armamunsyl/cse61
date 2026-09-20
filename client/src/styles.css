@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #172033;
+  background: #f6f7f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.routine-schedule-card {
+  --routine-time-col: 44px;
+  --routine-day-col: 74px;
+}
+
+@media (min-width: 700px) {
+  .routine-schedule-card {
+    --routine-time-col: 68px;
+    --routine-day-col: 106px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .routine-schedule-card {
+    --routine-time-col: 72px;
+    --routine-day-col: 108px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .routine-schedule-card {
+    --routine-time-col: 74px;
+    --routine-day-col: 124px;
+  }
+}
