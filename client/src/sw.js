@@ -34,8 +34,8 @@ self.addEventListener("push", (event) => {
   const unreadCount = Number(payload.unreadCount || 0);
   const options = {
     body: payload.body || "A schedule update is available.",
-    icon: "/icons/icon-192.svg",
-    badge: "/icons/maskable-icon-512.svg",
+    icon: "/icons/icon-192.png",
+    badge: "/icons/maskable-icon-512.png",
     tag: payload.eventId ? `cse61d-${payload.type}-${payload.eventId}` : `cse61d-${payload.type || "update"}`,
     data: {
       url: payload.url || "/",
