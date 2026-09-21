@@ -18,7 +18,7 @@ export const env = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
   clientOrigin: normalizeOrigin(process.env.CLIENT_ORIGIN || "http://localhost:5174"),
   cookieSecure,
-  cookieSameSite: cookieSecure ? "none" : "lax",
+  cookieSameSite: "lax",
   adminEmail: process.env.ADMIN_EMAIL,
   adminPassword: process.env.ADMIN_PASSWORD,
   adminName: process.env.ADMIN_NAME || "CSE 61 D Admin",
