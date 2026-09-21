@@ -6,10 +6,17 @@ import { asyncHandler } from "../utils/errors.js";
 function cookieOptions() {
   return {
     httpOnly: true,
-    sameSite: "lax",
-    secure: env.cookieSecure || env.nodeEnv === "production",
+    sameSite: env.cookieSameSite,
+    secure: env.cookieSecure,
+    path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000
   };
+}
+
+function clearCookieOptions() {
+  const options = cookieOptions();
+  delete options.maxAge;
+  return options;
 }
 
 export const login = asyncHandler(async (req, res) => {
@@ -24,7 +31,7 @@ export const login = asyncHandler(async (req, res) => {
 });
 
 export function logout(req, res) {
-  res.clearCookie("admin_token", cookieOptions());
+  res.clearCookie("admin_token", clearCookieOptions());
   res.json({ message: "Logged out" });
 }
 

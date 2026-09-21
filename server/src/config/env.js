@@ -2,14 +2,23 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const nodeEnv = process.env.NODE_ENV || "development";
+const isProduction = nodeEnv === "production";
+const cookieSecure = isProduction || process.env.COOKIE_SECURE === "true";
+
+function normalizeOrigin(origin) {
+  return origin.replace(/\/+$/, "");
+}
+
 export const env = {
-  nodeEnv: process.env.NODE_ENV || "development",
+  nodeEnv,
   port: Number(process.env.PORT || 8000),
   mongoUri: process.env.MONGO_URI || "mongodb://127.0.0.1:27017/mucse61_schedule",
   jwtSecret: process.env.JWT_SECRET || "development-only-secret-change-me",
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
-  clientOrigin: process.env.CLIENT_ORIGIN || "http://localhost:5174",
-  cookieSecure: process.env.COOKIE_SECURE === "true",
+  clientOrigin: normalizeOrigin(process.env.CLIENT_ORIGIN || "http://localhost:5174"),
+  cookieSecure,
+  cookieSameSite: cookieSecure ? "none" : "lax",
   adminEmail: process.env.ADMIN_EMAIL,
   adminPassword: process.env.ADMIN_PASSWORD,
   adminName: process.env.ADMIN_NAME || "CSE 61 D Admin",
